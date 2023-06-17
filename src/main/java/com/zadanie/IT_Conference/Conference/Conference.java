@@ -12,31 +12,99 @@ import java.util.List;
 
 public class Conference {
     private long confId;
-    private long prelecId;
-    private List<User> users;
-    private List<Prelections> prelec;
+    private int numberOfPrelec;
     private LocalDate conferenceDate;
     private LocalTime conferenceStartTime;
     private LocalTime conferenceEndTime;
     private Duration lectureDuration;
     private Duration breakDuration;
-    private int maxListeners;
 
     public Conference(long confId,
-                      long prelecId,
-                      List<User> users) {
+                      int numberOfPrelec,
+                      LocalDate conferenceDate,
+                      LocalTime conferenceStartTime,
+                      LocalTime conferenceEndTime,
+                      Duration lectureDuration,
+                      Duration breakDuration) {
         this.confId = confId;
-        this.prelecId = prelecId;
-        this.users = users;
-        this.conferenceDate = LocalDate.of(2023, Month.JUNE, 1);
-        this.conferenceStartTime = LocalTime.of(10, 0);
-        this.conferenceEndTime = LocalTime.of(15, 45);
-        this.lectureDuration = Duration.ofMinutes(105);
-        this.breakDuration = Duration.ofMinutes(15);
-        this.maxListeners = 5;
+        this.numberOfPrelec = numberOfPrelec;
+        this.conferenceDate = conferenceDate;
+        this.conferenceStartTime = conferenceStartTime;
+        this.conferenceEndTime = conferenceEndTime;
+        this.lectureDuration = lectureDuration;
+        this.breakDuration = breakDuration;
     }
 
-//    public Conference() {
+    public long getConfId() {
+        return confId;
+    }
+
+    public void setConfId(long confId) {
+        this.confId = confId;
+    }
+
+    public int getNumberOfPrelec() {
+        return numberOfPrelec;
+    }
+
+    public void setNumberOfPrelec(int numberOfPrelec) {
+        this.numberOfPrelec = numberOfPrelec;
+    }
+
+    public LocalDate getConferenceDate() {
+        return conferenceDate;
+    }
+
+    public void setConferenceDate(LocalDate conferenceDate) {
+        this.conferenceDate = conferenceDate;
+    }
+
+    public LocalTime getConferenceStartTime() {
+        return conferenceStartTime;
+    }
+
+    public void setConferenceStartTime(LocalTime conferenceStartTime) {
+        this.conferenceStartTime = conferenceStartTime;
+    }
+
+    public LocalTime getConferenceEndTime() {
+        return conferenceEndTime;
+    }
+
+    public void setConferenceEndTime(LocalTime conferenceEndTime) {
+        this.conferenceEndTime = conferenceEndTime;
+    }
+
+    public Duration getLectureDuration() {
+        return lectureDuration;
+    }
+
+    public void setLectureDuration(Duration lectureDuration) {
+        this.lectureDuration = lectureDuration;
+    }
+
+    public Duration getBreakDuration() {
+        return breakDuration;
+    }
+
+    public void setBreakDuration(Duration breakDuration) {
+        this.breakDuration = breakDuration;
+    }
+
+    @Override
+    public String toString() {
+        return "Conference{" +
+                "confId=" + confId +
+                ", numberOfPrelec=" + numberOfPrelec +
+                ", conferenceDate=" + conferenceDate +
+                ", conferenceStartTime=" + conferenceStartTime +
+                ", conferenceEndTime=" + conferenceEndTime +
+                ", lectureDuration=" + lectureDuration +
+                ", breakDuration=" + breakDuration +
+                '}';
+    }
+
+    //    public Conference() {
 //        this.conferenceDate = LocalDate.of(2023, Month.JUNE, 1);
 //        this.conferenceStartTime = LocalTime.of(10, 0);
 //        this.conferenceEndTime = LocalTime.of(15, 45);

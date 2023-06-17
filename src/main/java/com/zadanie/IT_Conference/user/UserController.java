@@ -18,6 +18,7 @@ public class UserController {
         return userService.getUsers();
     }
 
+
     //Dodawanie użytkownika do tabeli users
     //        POST localhost:8080/api/users
     //        {
