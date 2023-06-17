@@ -1,32 +1,38 @@
 package com.zadanie.IT_Conference.user;
 
+import jakarta.persistence.Column;
+
 import java.time.LocalDate;
 
 public class User {
     private Long id;
-    private String first_name;
-    private String last_name;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
     private String login;
     private String password;
     private String email;
+    @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
     public User() {
     }
 
-    public User(Long id, String first_name, String last_name, String login, String password, String email, LocalDate dateOfBirth) {
+    public User(Long id, String firstName, String lastName, String login, String password, String email, LocalDate dateOfBirth) {
         this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.login = login;
         this.password = password;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public User(String first_name, String last_name, String login, String email, LocalDate dateOfBirth) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public User(String firstName, String lastName, String login, String email, LocalDate dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.login = login;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -40,20 +46,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getLogin() {
@@ -92,11 +98,11 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", date_of_birth=" + dateOfBirth +
                 '}';
     }
 }
