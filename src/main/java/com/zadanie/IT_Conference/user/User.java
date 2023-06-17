@@ -23,11 +23,11 @@ public class User {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "login", nullable = false)
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
@@ -115,6 +115,7 @@ public class User {
                 "id=" + id +
                 ", first_name='" + firstName + '\'' +
                 ", last_name='" + lastName + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", date_of_birth=" + dateOfBirth +
