@@ -4,7 +4,7 @@ Serwis dla obsługi IT konferencji. Stworzona przy pomocy frameworku Spring Boot
 Użyta baza danych: PostgreSQL
 
 Dla korzystania z bazy danych trzeba pobrać Docker Desktop, stworzyć plik docker-compose.yaml i skonfigurować go w następujący sposób:
-{
+*
 version: '3.8'
 
 services:
@@ -30,7 +30,7 @@ services:
     restart: always
     ports:
       - 8077:8080
-}
+*
 
 Po tym w terminale wpisać:$ docker compose up -d
 Nastepnie przejść do strony http://localhost:8077 i wpisać dane:
