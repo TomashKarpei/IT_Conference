@@ -33,4 +33,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     @Query("UPDATE Reservation r SET r.userEmail=?2 WHERE r.userId = ?1")
     void updateEmails(long userId, String userEmailNew);
 
+    @Modifying
+    @Query("DELETE FROM Reservation r WHERE r.userLogin = ?1 and r.prelecId = ?2")
+    void deleteByUserLogin(String userLogin, long prelecId);
+
+    @Query("SELECT r FROM Reservation r WHERE r.userLogin = ?1 and r.prelecId = ?2")
+    long  deleteByUser(String userLogin, long prelecId);
 }

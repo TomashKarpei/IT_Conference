@@ -6,6 +6,7 @@ import com.zadanie.IT_Conference.user.User;
 import com.zadanie.IT_Conference.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.io.FileWriter;
@@ -107,5 +108,9 @@ public class ReservationService {
 
     public List<Reservation> getReservationByUserLogin(String userLogin) {
         return reservationRepository.findReservationByUserLogin(userLogin);
+    }
+    @Transactional
+    public void deleteReservationByLogin(String userLogin, long prelecId) {
+        reservationRepository.deleteByUserLogin(userLogin, prelecId);
     }
 }

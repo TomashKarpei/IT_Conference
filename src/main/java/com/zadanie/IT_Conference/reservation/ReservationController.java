@@ -61,6 +61,16 @@ public class ReservationController {
         reservationService.deleteReservation(reservationId);
     }
 
+    // Usunięcie rezerwacji przy podaniu logina uzytkownika oraz id prelekcji
+                                                                    //{login_uzytkownika}?prelecId={id_prelekcji}
+    // DELETE localhost:8080/conference/reservation/usersReservations/FunTomAsh?prelecId=1
+    @DeleteMapping(path = "/usersReservations/{userLogin}")
+    public void deleteUserReservation(@PathVariable("userLogin") String userLogin,
+                                      @RequestParam(required = true) long prelecId){
+        reservationService.deleteReservationByLogin(userLogin, prelecId);
+    }
+
+
 
 
 

@@ -49,6 +49,7 @@ public class UserController {
     public void deleteUser(@PathVariable("userId") Long userId) {
         userService.deleteUser(userId);
     }
+
     //Zmiana maila
     //                             {id_uzytkownika}?email={nowy_email}
     // PUT localhost:8080/api/users/1?email=mat@gmail.com
