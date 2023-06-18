@@ -13,7 +13,16 @@ public class UserController {
         this.userService = userService;
     }
 
+    //Wypisywanie listy zarejstrowanych uzytkownikow (imie, nazwisko, login, email)
+    // GET localhost:8080/api/users
     @GetMapping
+    public List<UserDTO> getUserNamesLoginsEmails(){
+        return userService.getUserNamesLoginsEmails();
+    }
+
+    //Wypisywanie wszystkich danych zarejstrowanych uzytkownikow
+    // GET localhost:8080/api/users
+    @GetMapping("/devUsers")
     public List<User> getUsers(){
         return userService.getUsers();
     }

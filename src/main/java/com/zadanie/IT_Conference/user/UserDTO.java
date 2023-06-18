@@ -5,20 +5,19 @@ import jakarta.persistence.Column;
 import java.time.LocalDate;
 
 public class UserDTO {
-    private Long userId;
     private String userFirstName;
     private String userLastName;
     private String userLogin;
-    //private String userPassword;
     private String userEmail;
-    private LocalDate userDateOfBirth;
 
-    public Long getUserId() {
-        return userId;
+    public UserDTO(){
+
     }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public UserDTO(String userFirstName, String userLastName, String userLogin, String userEmail) {
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.userLogin = userLogin;
+        this.userEmail = userEmail;
     }
 
     public String getUserFirstName() {
@@ -61,11 +60,4 @@ public class UserDTO {
         this.userEmail = userEmail;
     }
 
-    public LocalDate getUserDateOfBirth() {
-        return userDateOfBirth;
-    }
-
-    public void setUserDateOfBirth(LocalDate userDateOfBirth) {
-        this.userDateOfBirth = userDateOfBirth;
-    }
 }

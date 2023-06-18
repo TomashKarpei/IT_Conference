@@ -1,9 +1,11 @@
 package com.zadanie.IT_Conference.user;
 
+import com.zadanie.IT_Conference.reservation.Reservation;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +22,22 @@ public class UserService {
     //wypisuje liste zarejestrowanych uzytkownikow ze wszystkimi danymi
     public List<User> getUsers(){
         return userRepository.findAll();
+    }
+
+    public List<UserDTO> getUserNamesLoginsEmails() {
+        List<Object[]> resultList = userRepository.findUserNamesLoginsEmails();
+        List<UserDTO> usersDTO = new ArrayList<>();
+
+        for (Object[] result : resultList) {
+            UserDTO user = new UserDTO();
+            user.setUserFirstName((String) result[0]);
+            user.setUserLastName((String) result[1]);
+            user.setUserLogin((String) result[2]);
+            user.setUserEmail((String) result[3]);
+            usersDTO.add(user);
+        }
+
+        return usersDTO;
     }
 
     //dodawanie nowego uzytkownika od bazy danych
