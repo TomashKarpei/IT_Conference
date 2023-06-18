@@ -32,6 +32,7 @@ public class ReservationController {
     public Reservation getReservationById(@PathVariable long id) {
         return reservationService.getReservationById(id);
     }
+
     //wyswietla rezerwacje o podanym Loginie uzytkownika
     //GET localhost:8080/conference/reservation/usersReservations/FunTomAsh
     @GetMapping("/usersReservations/{userLogin}")

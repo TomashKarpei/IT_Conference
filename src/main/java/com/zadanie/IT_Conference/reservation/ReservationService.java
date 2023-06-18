@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,8 +79,11 @@ public class ReservationService {
         }
 
         //Wysylanie wiadomosci przez mail (zapisywwanie do pliku)
-        generateMailNotif("Reservation successful. Notification on email " + reservation.getUserEmail() + " has been sent.");
-
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        generateMailNotif("Reservation successful. Notification on email " + reservation.getUserEmail() + " has been sent. Date and Time: "+ formattedDateTime);
+        System.out.println("Reservation successful. Notification on email " + reservation.getUserEmail() + " has been sent. Date and Time: "+ formattedDateTime);
         return reservationRepository.save(reservation);
     }
 

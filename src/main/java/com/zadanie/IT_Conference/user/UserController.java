@@ -21,7 +21,7 @@ public class UserController {
     }
 
     //Wypisywanie wszystkich danych zarejstrowanych uzytkownikow
-    // GET localhost:8080/api/users
+    // GET localhost:8080/api/users/devUsers
     @GetMapping("/devUsers")
     public List<User> getUsers(){
         return userService.getUsers();
