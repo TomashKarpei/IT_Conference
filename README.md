@@ -67,12 +67,12 @@ Dodawanie użytkownika do tabeli users:
 ```
            POST localhost:8080/api/users
            {
-                   "firstName": "Grzegorz",
-                   "lastName": "Marcinczyk",
-                   "login": "grzegorz99",
-                   "password":"1234",
-                   "email": "grzegorzM@gmail.com",
-                   "dateOfBirth" : "1999-02-27"
+                   "firstName": "Grzegorz",           //imie
+                   "lastName": "Marcinczyk",          //nazwisko
+                   "login": "grzegorz99",             //login
+                   "password":"1234",                 //hasło
+                   "email": "grzegorzM@gmail.com",    //email
+                   "dateOfBirth" : "1999-02-27"       //rok, miesiąć, dzień urodzenia
            }
 ```
 Usunięcie użytkownika z tabeli users:
@@ -81,9 +81,49 @@ Usunięcie użytkownika z tabeli users:
 DELETE localhost:8080/api/users/6
 ```
 
-Zmiana maila użytkownika (przy zmianie email użtykownika, tak samo następuje zmiana na nowy email w tabeli z rezerwacjami) :
+Zmiana maila użytkownika (przy zmianie email użtykownika, tak samo następuje zmiana na nowy email w tabeli z rezerwacjami):
 (/users/{id_uzytkownika}?email={nowy_email})
 ```
 PUT localhost:8080/api/users/1?email=mat@gmail.com
 ```
  
+Wyświetlenie wszystkich rezerwacji:
+```
+GET localhost:8080/conference/reservation
+```
+
+Wyświetlenie rezerwacje o podanym ID:
+```
+GET localhost:8080/conference/reservation/1
+```
+Wyświetla wszystkie rezerwacji użytkownika o podanym Loginie
+```
+GET localhost:8080/conference/reservation/usersReservations/FunTomAsh
+```
+
+Rezerwacja użytkownika w prelekcji:
+```
+    POST localhost:8080/conference/reservation
+    {
+            "userId": 1,                          //ID użytkownika
+            "userLogin": "FunTomAsh",             //login
+            "userEmail": "tomash342@gmail.com",   //email
+            "prelecId" : 1,                       //ID prelekcji  
+            "prelecTopic": "Computer graphics"    //scieżka
+    }
+```
+Podczas tworzenia rezerwacji w funkcji createReservation w pliku ReservationService sprawdza się, czy użytkownik jest zarejestrowany, czy użytkownik już ma zarezerwowane miejsce w tej prelekcji, czy podany przez użytkonwika email nie jest zajęty, czy podany przez użytkonwika login nie jest zajęty, czy wprowadzona ścieżka istnieje oraz ile miejsc jest zarezerwowane w prelekcji (jezeli >5 to nie mozna zarezerwować miejsce).
+Po udanej rezerwacji tworzy się plik, który jest potwierdzeniem rezerwacji.
+
+
+Usunięcie rezerwacji:
+```
+                                                  //{id_rezerwacji}
+    DELETE localhost:8080/conference/reservation/1
+```
+
+Usunięcie rezerwacji przy podaniu logina uzytkownika oraz id prelekcji:
+```
+                                                                 //{login_uzytkownika}?prelecId={id_prelekcji}
+    DELETE localhost:8080/conference/reservation/usersReservations/FunTomAsh?prelecId=1
+```
