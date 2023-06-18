@@ -19,7 +19,7 @@ public class PrelectionsConfig {
                     "Prelection number 1",
                     LocalDateTime.of(2023, Month.JUNE, 1, 10, 00, 00),
                     LocalDateTime.of(2023, Month.JUNE, 1, 11, 45, 00),
-                    "Computer graphic",
+                    "Computer graphics",
                     "Internet technologies",
                     "Artificial intelligence"
             );

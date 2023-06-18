@@ -18,16 +18,26 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
+    @GetMapping("/{id}")
+    public Reservation getReservationById(@PathVariable long id) {
+        return reservationService.getReservationById(id);
+    }
 
+    //Rezerwacja
+//    POST localhost:8080/conference/reservation
+//    {
+//        "userId": 1,
+//            "userLogin": "FunTomAsh",
+//            "userEmail": "tomash342@gmail.com",
+//            "prelecId" : 1,
+//            "prelecTopic": "Computer graphics"
+//    }
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
         return reservationService.createReservation(reservation);
     }
 
-    @GetMapping("/{id}")
-    public Reservation getReservationById(@PathVariable long id) {
-        return reservationService.getReservationById(id);
-    }
+
 
 
 }

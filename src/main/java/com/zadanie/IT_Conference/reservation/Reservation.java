@@ -21,18 +21,22 @@ public class Reservation {
     )
     @Column(name = "id", unique = true, nullable = false)
     private long reservationId;
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User userId;
-    @ManyToOne
-    @JoinColumn(name = "prelec_id", referencedColumnName = "prelec_id")
-    private Prelections prelecId;
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+    @Column(name = "user_login", nullable = false)
+    private String userLogin;
+    @Column(name = "user_email", nullable = false)
+    private String userEmail;
+    @Column(name = "prelec_id", nullable = false)
+    private Long prelecId;
     @Column(name = "topic", nullable = false)
     private String prelecTopic;
 
-    public Reservation(long reservationId, User userId, Prelections prelecId, String prelecTopic) {
+    public Reservation(long reservationId, Long userId, String userLogin, String userEmail, Long prelecId, String prelecTopic) {
         this.reservationId = reservationId;
         this.userId = userId;
+        this.userLogin = userLogin;
+        this.userEmail = userEmail;
         this.prelecId = prelecId;
         this.prelecTopic = prelecTopic;
     }
@@ -45,19 +49,35 @@ public class Reservation {
         this.reservationId = reservationId;
     }
 
-    public User getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Prelections getPrelecId() {
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public Long getPrelecId() {
         return prelecId;
     }
 
-    public void setPrelecId(Prelections prelecId) {
+    public void setPrelecId(Long prelecId) {
         this.prelecId = prelecId;
     }
 
