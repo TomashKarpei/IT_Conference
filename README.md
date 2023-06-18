@@ -43,3 +43,37 @@ Password: 1234
 Database: ItConference
 
 Po kliknięciu Login odbędzie się połączenie z bazą danych.
+
+Dla wysyłania takich komand jak POST, PUT, GET, DELETE itd lepiej używać aplikacje Postman (lub werjsa Ultimate InteliJ).
+
+#Przykłady:
+
+Wyświetlenie wszystkich prelekcji oraz informacji o nich:
+```GET localhost:8080/api/prelections```
+
+Wypisywanie listy zarejstrowanych uzytkownikow (imie, nazwisko, login, email):
+```GET localhost:8080/api/users```
+
+Wypisywanie wszystkich danych zarejstrowanych uzytkownikow razem z hasłem oraz ID:
+```GET localhost:8080/api/users/devUsers```
+
+Dodawanie użytkownika do tabeli users:
+```
+           POST localhost:8080/api/users
+           {
+                   "firstName": "Grzegorz",
+                   "lastName": "Marcinczyk",
+                   "login": "grzegorz99",
+                   "password":"1234",
+                   "email": "grzegorzM@gmail.com",
+                   "dateOfBirth" : "1999-02-27"
+           }
+```
+Usunięcie użytkownika z tabeli users:
+                                     //Liczba po users to ID użytkownika /users/{id_uzytkownika}
+```DELETE localhost:8080/api/users/6```
+
+Zmiana maila użytkownika (przy zmianie email użtykownika, tak samo następuje zmiana na nowy email w tabeli z rezerwacjami) :
+//                             /users/{id_uzytkownika}?email={nowy_email}
+``PUT localhost:8080/api/users/1?email=mat@gmail.com```
+ 
