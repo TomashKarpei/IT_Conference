@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -18,14 +19,24 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
+    //wyswietla wszystkie rezerwacji
+    //GET localhost:8080/conference/reservation
     @GetMapping()
     public List<Reservation> getReservations() {
         return reservationService.getReservations();
     }
 
+    //wyswietla rezerwacje o podanym Id
+    //GET localhost:8080/conference/reservation/1
     @GetMapping("/{id}")
     public Reservation getReservationById(@PathVariable long id) {
         return reservationService.getReservationById(id);
+    }
+    //wyswietla rezerwacje o podanym Loginie uzytkownika
+    //GET localhost:8080/conference/reservation/usersReservations/FunTomAsh
+    @GetMapping("/usersReservations/{userLogin}")
+    public List<Reservation> getReservationById(@PathVariable String userLogin) {
+        return reservationService.getReservationByUserLogin(userLogin);
     }
 
     //Rezerwacja
@@ -38,7 +49,7 @@ public class ReservationController {
 //            "prelecTopic": "Computer graphics"
 //    }
     @PostMapping
-    public Reservation createReservation(@RequestBody Reservation reservation) {
+    public Reservation createReservation(@RequestBody Reservation reservation) throws IOException {
         return reservationService.createReservation(reservation);
     }
 

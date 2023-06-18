@@ -37,8 +37,8 @@ public class PrelectionsConfig {
                     "Prelection number 3",
                     LocalDateTime.of(2023, Month.JUNE, 1, 14, 00, 00),
                     LocalDateTime.of(2023, Month.JUNE, 1, 15, 45, 00),
-                    "Computer graphic",
-                    "Internet technologies",
+                    "Anti-Aliasing",
+                    "Pl/SQL",
                     "Artificial intelligence"
             );
             prep.saveAll(List.of(prelection1, prelection2, prelection3));

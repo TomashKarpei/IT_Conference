@@ -7,6 +7,8 @@ import com.zadanie.IT_Conference.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -29,7 +31,7 @@ public class ReservationService {
         return reservationRepository.findAll();
     }
 
-    public Reservation createReservation(Reservation reservation) {
+    public Reservation createReservation(Reservation reservation) throws IOException {
         Optional<User> findUser =
                 userRepository.findUserByLoginEmail(reservation.getUserId(), reservation.getUserLogin(), reservation.getUserEmail());
         //sprawdza, czy uzytkownik jest zarejestrowany
@@ -53,7 +55,7 @@ public class ReservationService {
 
         //sprawdza, czy podany przez uzytkonwika login nie jest zajety
         Optional<Reservation> userOptionalLogin =
-                reservationRepository.findReservationByUserLogin(reservation.getUserLogin(), reservation.getPrelecId());
+                reservationRepository.findReservationByUserLoginAndPrelecId(reservation.getUserLogin(), reservation.getPrelecId());
         if (userOptionalLogin.isPresent()){
             throw new IllegalStateException("Reservation with this login is already created.");
         }
@@ -71,8 +73,19 @@ public class ReservationService {
             throw new IllegalStateException("There is no more place for reservations.");
         }
 
+        //Wysylanie wiadomosci przez mail (zapisywwanie do pliku)
+        generateMailNotif("Reservation successful. Notification on email " + reservation.getUserEmail() + " has been sent.");
 
         return reservationRepository.save(reservation);
+    }
+
+    public void generateMailNotif(String content) throws IOException {
+        String filePath = "/mailNotif.txt";
+
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            fileWriter.write(content);
+            //System.out.println("Success");
+        }
     }
 
     public Reservation getReservationById(long id) {
@@ -92,4 +105,7 @@ public class ReservationService {
     }
 
 
+    public List<Reservation> getReservationByUserLogin(String userLogin) {
+        return reservationRepository.findReservationByUserLogin(userLogin);
+    }
 }
