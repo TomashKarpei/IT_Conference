@@ -1,6 +1,7 @@
 package com.zadanie.IT_Conference.reservation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -28,5 +29,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     @Query("SELECT count(r) FROM Reservation r WHERE r.prelecId = ?1")
     Long countReservation(long prelecId);
+    @Modifying
+    @Query("UPDATE Reservation r SET r.userEmail=?2 WHERE r.userId = ?1")
+    void updateEmails(long userId, String userEmailNew);
 
 }

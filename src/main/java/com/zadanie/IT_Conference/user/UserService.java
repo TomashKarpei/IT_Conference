@@ -1,6 +1,7 @@
 package com.zadanie.IT_Conference.user;
 
 import com.zadanie.IT_Conference.reservation.Reservation;
+import com.zadanie.IT_Conference.reservation.ReservationRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,12 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final ReservationRepository reservationRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, ReservationRepository reservationRepository){
         this.userRepository = userRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     //wypisuje liste zarejestrowanych uzytkownikow ze wszystkimi danymi
@@ -81,6 +84,8 @@ public class UserService {
                 throw new IllegalStateException("Email is already taken.");
             }
             user.setEmail(email);
+            //modyfikowanie email w rezerwacjach
+            reservationRepository.updateEmails(userId, email);
         }
     }
 }

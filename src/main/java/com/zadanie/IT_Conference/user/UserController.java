@@ -51,7 +51,7 @@ public class UserController {
     }
     //Zmiana maila
     //                             {id_uzytkownika}?email={nowy_email}
-    // PUT localhost:8080/api/users/5?email=mat@gmail.com
+    // PUT localhost:8080/api/users/1?email=mat@gmail.com
     @PutMapping(path = "{userId}")
     public void updateUser(@PathVariable("userId") Long userId,
                            @RequestParam(required = false) String email

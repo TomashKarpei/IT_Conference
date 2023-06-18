@@ -42,7 +42,7 @@ public class ReservationController {
     //Rezerwacja
 //    POST localhost:8080/conference/reservation
 //    {
-//        "userId": 1,
+//            "userId": 1,
 //            "userLogin": "FunTomAsh",
 //            "userEmail": "tomash342@gmail.com",
 //            "prelecId" : 1,
