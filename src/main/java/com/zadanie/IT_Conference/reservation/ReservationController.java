@@ -18,6 +18,11 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
+    @GetMapping()
+    public List<Reservation> getReservations() {
+        return reservationService.getReservations();
+    }
+
     @GetMapping("/{id}")
     public Reservation getReservationById(@PathVariable long id) {
         return reservationService.getReservationById(id);
@@ -35,6 +40,14 @@ public class ReservationController {
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
         return reservationService.createReservation(reservation);
+    }
+
+    // Usunięcie rezerwacji
+                                                   //{id_rezerwacji}
+    // DELETE localhost:8080/conference/reservation/1
+    @DeleteMapping(path = "{reservationId}")
+    public void deleteReservation(@PathVariable("reservationId") Long reservationId) {
+        reservationService.deleteReservation(reservationId);
     }
 
 

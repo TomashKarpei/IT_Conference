@@ -17,6 +17,8 @@ public class PrelectionsController {
         this.prelectionService = prelectionService;
     }
 
+    //wyswietla wszystkie prelekcje oraz informacje
+    // GET localhost:8080/api/prelections
     @GetMapping
     public List<Prelections> getPrelections(){
         return prelectionService.getPrelections();

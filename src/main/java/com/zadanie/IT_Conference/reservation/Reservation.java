@@ -32,6 +32,9 @@ public class Reservation {
     @Column(name = "topic", nullable = false)
     private String prelecTopic;
 
+    public Reservation(){
+
+    }
     public Reservation(long reservationId, Long userId, String userLogin, String userEmail, Long prelecId, String prelecTopic) {
         this.reservationId = reservationId;
         this.userId = userId;
@@ -87,5 +90,17 @@ public class Reservation {
 
     public void setPrelecTopic(String prelecTopic) {
         this.prelecTopic = prelecTopic;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "reservationId=" + reservationId +
+                ", userId=" + userId +
+                ", userLogin='" + userLogin + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", prelecId=" + prelecId +
+                ", prelecTopic='" + prelecTopic + '\'' +
+                '}';
     }
 }
