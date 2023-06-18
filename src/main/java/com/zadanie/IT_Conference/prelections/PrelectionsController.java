@@ -1,7 +1,5 @@
 package com.zadanie.IT_Conference.prelections;
 
-import com.zadanie.IT_Conference.user.User;
-import com.zadanie.IT_Conference.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

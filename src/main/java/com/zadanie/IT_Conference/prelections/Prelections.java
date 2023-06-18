@@ -1,8 +1,6 @@
 package com.zadanie.IT_Conference.prelections;
 
-import com.zadanie.IT_Conference.user.User;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 
 import java.time.LocalDateTime;
 import java.util.List;

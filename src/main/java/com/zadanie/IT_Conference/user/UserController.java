@@ -18,7 +18,6 @@ public class UserController {
         return userService.getUsers();
     }
 
-
     //Dodawanie użytkownika do tabeli users
     //        POST localhost:8080/api/users
     //        {
@@ -41,6 +40,7 @@ public class UserController {
     public void deleteUser(@PathVariable("userId") Long userId) {
         userService.deleteUser(userId);
     }
+
     //Zmiana maila
     //                             {id_uzytkownika}?email={nowy_email}
     // PUT localhost:8080/api/users/5?email=mat@gmail.com

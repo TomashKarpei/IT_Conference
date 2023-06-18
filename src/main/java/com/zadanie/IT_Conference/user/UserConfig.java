@@ -3,7 +3,7 @@ package com.zadanie.IT_Conference.user;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Repository;
+
 
 import java.time.LocalDate;
 import java.time.Month;
