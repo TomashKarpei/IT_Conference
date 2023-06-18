@@ -41,7 +41,7 @@ public class PrelectionsConfig {
                     "Internet technologies",
                     "Artificial intelligence"
             );
-            //prep.saveAll(List.of(prelection1, prelection2, prelection3));
+            prep.saveAll(List.of(prelection1, prelection2, prelection3));
         };
     }
 }

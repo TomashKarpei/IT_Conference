@@ -2,6 +2,7 @@ package com.zadanie.IT_Conference.Conference;
 
 import com.zadanie.IT_Conference.prelections.Prelections;
 import com.zadanie.IT_Conference.user.User;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,16 +11,41 @@ import java.time.Month;
 import java.time.Duration;
 import java.util.List;
 
+@Entity
+@Table(name = "CONFERENCE")
 public class Conference {
+    @Id
+    @SequenceGenerator(
+            name = "conference_sequence",
+            sequenceName = "conference_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "conference_sequence"
+    )
+    @Column(name = "conf_id", unique = true, nullable = false)
     private long confId;
+    @Column(name = "conf_name")
+    private String confName;
+    @Column(name = "number_of_prelections")
     private int numberOfPrelec;
+    @Column(name = "conf_date")
     private LocalDate conferenceDate;
+    @Column(name = "conf_start_time")
     private LocalTime conferenceStartTime;
+    @Column(name = "conf_end_time")
     private LocalTime conferenceEndTime;
+    @Column(name = "lect_duration")
     private Duration lectureDuration;
+    @Column(name = "break_duration")
     private Duration breakDuration;
 
+    public Conference(){
+
+    }
     public Conference(long confId,
+                      String confName,
                       int numberOfPrelec,
                       LocalDate conferenceDate,
                       LocalTime conferenceStartTime,
@@ -27,6 +53,7 @@ public class Conference {
                       Duration lectureDuration,
                       Duration breakDuration) {
         this.confId = confId;
+        this.confName = confName;
         this.numberOfPrelec = numberOfPrelec;
         this.conferenceDate = conferenceDate;
         this.conferenceStartTime = conferenceStartTime;
@@ -41,6 +68,14 @@ public class Conference {
 
     public void setConfId(long confId) {
         this.confId = confId;
+    }
+
+    public String getConfName() {
+        return confName;
+    }
+
+    public void setConfName(String confName) {
+        this.confName = confName;
     }
 
     public int getNumberOfPrelec() {
@@ -95,6 +130,7 @@ public class Conference {
     public String toString() {
         return "Conference{" +
                 "confId=" + confId +
+                ",confName=" + confName +
                 ", numberOfPrelec=" + numberOfPrelec +
                 ", conferenceDate=" + conferenceDate +
                 ", conferenceStartTime=" + conferenceStartTime +
