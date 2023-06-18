@@ -70,10 +70,10 @@ Dodawanie użytkownika do tabeli users:
            }
 ```
 Usunięcie użytkownika z tabeli users:
-                                     //Liczba po users to ID użytkownika /users/{id_uzytkownika}
+(Liczba po users to ID użytkownika /users/{id_uzytkownika})
 ```DELETE localhost:8080/api/users/6```
 
 Zmiana maila użytkownika (przy zmianie email użtykownika, tak samo następuje zmiana na nowy email w tabeli z rezerwacjami) :
-//                             /users/{id_uzytkownika}?email={nowy_email}
+(/users/{id_uzytkownika}?email={nowy_email})
 ``PUT localhost:8080/api/users/1?email=mat@gmail.com```
  
