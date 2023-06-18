@@ -4,7 +4,7 @@ Serwis dla obsługi IT konferencji. Stworzona przy pomocy frameworku Spring Boot
 Użyta baza danych: PostgreSQL
 
 Żeby otworzyć ten projekt, trzeba pobrać go, rozpakować i otworzyć projekt przez środowisko InteliJ. Za uruchomienie aplikacji odpowiada plik ItConferenceApplication.
-
+Przy włączeniu projektu tworzy sie plan konferencji razem z prelekcjami oraz 6 użytkownikami. Po wyłączeniu tabeli są usuwane.
 Dla korzystania z bazy danych trzeba pobrać Docker Desktop, stworzyć plik docker-compose.yaml i skonfigurować go w następujący sposób:
 ```
 version: '3.8'
