@@ -28,10 +28,12 @@ public class ReservationService {
         this.userRepository = userRepository;
     }
 
+    //wyswietlenie wszystkich rezerwacji
     public List<Reservation> getReservations(){
         return reservationRepository.findAll();
     }
 
+    //tworzenie rezerwacji
     public Reservation createReservation(Reservation reservation) throws IOException {
         Optional<User> findUser =
                 userRepository.findUserByLoginEmail(reservation.getUserId(), reservation.getUserLogin(), reservation.getUserEmail());
@@ -80,6 +82,7 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
+    //Tworzenie pliku z powiadomieniem o wysylaniu potwierdzenia
     public void generateMailNotif(String content) throws IOException {
         String filePath = "/mailNotif.txt";
 
@@ -109,6 +112,8 @@ public class ReservationService {
     public List<Reservation> getReservationByUserLogin(String userLogin) {
         return reservationRepository.findReservationByUserLogin(userLogin);
     }
+
+    //usuwanie rezerwacji przez login + id prelekcji
     @Transactional
     public void deleteReservationByLogin(String userLogin, long prelecId) {
         reservationRepository.deleteByUserLogin(userLogin, prelecId);
