@@ -49,13 +49,19 @@ Dla wysyłania takich komand jak POST, PUT, GET, DELETE itd lepiej używać apli
 #Przykłady:
 
 Wyświetlenie wszystkich prelekcji oraz informacji o nich:
-```GET localhost:8080/api/prelections```
+```
+GET localhost:8080/api/prelections
+```
 
 Wypisywanie listy zarejstrowanych uzytkownikow (imie, nazwisko, login, email):
-```GET localhost:8080/api/users```
+```
+GET localhost:8080/api/users
+```
 
 Wypisywanie wszystkich danych zarejstrowanych uzytkownikow razem z hasłem oraz ID:
-```GET localhost:8080/api/users/devUsers```
+```
+GET localhost:8080/api/users/devUsers
+```
 
 Dodawanie użytkownika do tabeli users:
 ```
@@ -71,9 +77,13 @@ Dodawanie użytkownika do tabeli users:
 ```
 Usunięcie użytkownika z tabeli users:
 (Liczba po users to ID użytkownika /users/{id_uzytkownika})
-```DELETE localhost:8080/api/users/6```
+```
+DELETE localhost:8080/api/users/6
+```
 
 Zmiana maila użytkownika (przy zmianie email użtykownika, tak samo następuje zmiana na nowy email w tabeli z rezerwacjami) :
 (/users/{id_uzytkownika}?email={nowy_email})
-``PUT localhost:8080/api/users/1?email=mat@gmail.com```
+```
+PUT localhost:8080/api/users/1?email=mat@gmail.com
+```
  
